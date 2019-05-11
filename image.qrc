@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>image/board.png</file>
+        <file>image/b1.png</file>
+        <file>image/b2.png</file>
+        <file>image/b3.png</file>
+        <file>image/b4.png</file>
+        <file>image/b5.png</file>
+        <file>image/b6.png</file>
+        <file>image/b7.png</file>
+        <file>image/r1.png</file>
+        <file>image/r2.png</file>
+        <file>image/r3.png</file>
+        <file>image/r4.png</file>
+        <file>image/r5.png</file>
+        <file>image/r6.png</file>
+        <file>image/r7.png</file>
+    </qresource>
+</RCC>
