@@ -51,21 +51,21 @@ public:
     void moveRule(int i,int j,int value);
     void moveOrEat(int i,int j,int value,int eaten_i,int eaten_j,int eaten_value);
     void winOrNot();
+    void connectedToServer();
+    bool checkCanSet(int i,int j,int value);
     void mousePressEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *);
-    bool checkCanSet(int i,int j,int value);
-    void connectedToServer();
 
 public slots:
     void onePersonGameSlots();
     void multiPeopleGameSlots();
-    void editorGameSlots();
-    void editorGameStartSlots();
-    void exitGameSlots();
     void tcpServerSlots();
     void tcpClientSlots();
     void acceptConnection();
     void readFromSocket();
+    void editorGameSlots();
+    void editorGameStartSlots();
+    void exitGameSlots();
 
 private:
     QTcpServer *server;

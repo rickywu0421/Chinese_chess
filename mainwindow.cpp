@@ -561,6 +561,56 @@ void MainWindow::winOrNot()
     }
 }
 
+
+
+bool MainWindow::checkCanSet(int i,int j,int value){
+    if(situation[i][j]){
+        return false;
+    }
+    switch(value){
+    case 1:
+        if(i >= 3 && i <= 5 && j >= 0 && j <= 2){
+            for (int y = j+1;y <= 9;++y) {
+                if(situation[i][y] != 0 && situation[i][y] != -1) return true;
+                else if(situation[i][y] == -1) return false;
+            }
+            return true;
+        }
+        break;
+    case 2:
+        if(i >= 3 && i <= 5 && j >= 0 && j <= 2) return true;
+        break;
+    case 3:
+        if(j <= 4) return true;
+        break;
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        return true;
+    case -1:
+        if(i >= 3 && i <= 5 && j >= 7 && j <= 9){
+            for (int y = j-1;y >= 0;--y) {
+                if(situation[i][y] != 0 && situation[i][y] != 1) return true;
+                else if(situation[i][y] == 1) return false;
+            }
+            return true;
+        }
+        break;
+    case -2:
+        if(i >= 3 && i <= 5 && j >= 7 && j <= 9) return true;
+        break;
+    case -3:
+        if(j >= 5) return true;
+        break;
+    case -4:
+    case -5:
+    case -6:
+    case -7:
+        return true;
+    }
+    return false;
+}
 void MainWindow::mousePressEvent(QMouseEvent *event){
     if(event->pos().x() >= 0 && event->pos().x() <= 700
             && event->pos().y() >= 0 && event->pos().y() <=800
@@ -637,56 +687,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
         }
     }
 }
-
-bool MainWindow::checkCanSet(int i,int j,int value){
-    if(situation[i][j]){
-        return false;
-    }
-    switch(value){
-    case 1:
-        if(i >= 3 && i <= 5 && j >= 0 && j <= 2){
-            for (int y = j+1;y <= 9;++y) {
-                if(situation[i][y] != 0 && situation[i][y] != -1) return true;
-                else if(situation[i][y] == -1) return false;
-            }
-            return true;
-        }
-        break;
-    case 2:
-        if(i >= 3 && i <= 5 && j >= 0 && j <= 2) return true;
-        break;
-    case 3:
-        if(j <= 4) return true;
-        break;
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-        return true;
-    case -1:
-        if(i >= 3 && i <= 5 && j >= 7 && j <= 9){
-            for (int y = j-1;y >= 0;--y) {
-                if(situation[i][y] != 0 && situation[i][y] != 1) return true;
-                else if(situation[i][y] == 1) return false;
-            }
-            return true;
-        }
-        break;
-    case -2:
-        if(i >= 3 && i <= 5 && j >= 7 && j <= 9) return true;
-        break;
-    case -3:
-        if(j >= 5) return true;
-        break;
-    case -4:
-    case -5:
-    case -6:
-    case -7:
-        return true;
-    }
-    return false;
-}
-
 void MainWindow::paintEvent(QPaintEvent *){        
     QPainter painter(this);
     painter.setFont(font);
@@ -1036,6 +1036,7 @@ void MainWindow::readFromSocket()
         ++step;
         waitFromSocket = false;
     }
+    repaint();
     winOrNot();
 }
 void MainWindow::editorGameSlots()
