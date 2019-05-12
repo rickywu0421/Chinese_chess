@@ -1,4 +1,5 @@
 #include "editordialog.h"
+#include <QDebug>
 
 EditorDialog::EditorDialog()
 {

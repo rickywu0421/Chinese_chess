@@ -671,9 +671,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
                             if(checkCanSet(i,j,dialog->chessChose)){
                                 ++chessInBoard;
                                 situation[i][j] = dialog->chessChose;
+
                                 if(dialog->chessChose > 0) dialog->blackChessLeft[dialog->chessChose - 1]--;
                                 else if(dialog->chessChose < 0) dialog->redChessLeft[-(dialog->chessChose) -1]--;
 
+                                repaint();
+                                dialog->repaint();
                                 dialog->chessChose = 0;
                             }
                             else{
@@ -805,6 +808,10 @@ void MainWindow::onePersonGameSlots()
         if(QMessageBox::information(this,"確認視窗","確定退出當前遊戲,並開啟新的單人遊戲?",QMessageBox::Yes | QMessageBox::No) == QMessageBox::No){
             return;
         }
+        if(editorMode){
+            finishEdit->close();
+            dialog->close();
+        }
         editorMode = 0;
         exitFromEditor = 0;
     }
@@ -851,6 +858,10 @@ void MainWindow::multiPeopleGameSlots()
     else if(exitFromEditor){
         if(QMessageBox::information(this,"確認視窗","確定退出當前遊戲,並開啟新的連線遊戲?",QMessageBox::Yes | QMessageBox::No) == QMessageBox::No){
             return;
+        }
+        if(editorMode){
+            finishEdit->close();
+            dialog->close();
         }
         editorMode = 0;
         exitFromEditor = 0;
@@ -1070,6 +1081,10 @@ void MainWindow::editorGameSlots()
         if(QMessageBox::information(this,"確認視窗","確定退出當前遊戲,並開啟編輯模式?",QMessageBox::Yes | QMessageBox::No) == QMessageBox::No){
             return;
         }
+        if(editorMode){
+            finishEdit->close();
+            dialog->close();
+        }
         editorMode = 0;
         exitFromEditor = 0;
     }
@@ -1081,6 +1096,7 @@ void MainWindow::editorGameSlots()
 
 
     memset(situation,0,90 * sizeof(int));
+    this->repaint();
     dialog = new EditorDialog;
     dialog->setGeometry(250,250,500,200);
     dialog->show();
