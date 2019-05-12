@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>image/board.png</file>
+        <file>image/紅士.png</file>
+        <file>image/紅兵.png</file>
+        <file>image/紅車.png</file>
+        <file>image/紅帥.png</file>
+        <file>image/紅炮.png</file>
+        <file>image/紅相.png</file>
+        <file>image/紅馬.png</file>
+        <file>image/黑仕.png</file>
+        <file>image/黑車.png</file>
+        <file>image/黑卒.png</file>
+        <file>image/黑炮.png</file>
+        <file>image/黑馬.png</file>
+        <file>image/黑將.png</file>
+        <file>image/黑象.png</file>
+    </qresource>
+</RCC>

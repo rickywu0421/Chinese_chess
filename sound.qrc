@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>music/Aldnoah.Zero_OST_MKAlieZ.mp3</file>
+    </qresource>
+</RCC>
